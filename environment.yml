@@ -1,0 +1,26 @@
+name: .venv_FT
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10.18
+  - scikit-image=0.25.2
+  - h5py=3.14.0
+  - matplotlib=3.10.5
+  - numpy=2.0.1
+  - scipy=1.15.3
+  - pillow=11.3.0
+  - tqdm=4.67.1
+  - pip
+  - pip:
+      - basicsr==1.4.2
+      - realesrgan==0.3.0
+      - torch==2.8.0
+      - torchvision==0.23.0
+      - gfpgan==1.3.8
+      - addict==2.4.0
+      - einops==0.8.1
+      - filterpy==1.4.5
+      - lmdb==1.4.1
+      - opencv-python==4.12.0.88
+      - pyiqa==0.1.13

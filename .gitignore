@@ -1,0 +1,12 @@
+# Ignorar tudo dentro da pasta Datasets, exceto o readme.md
+Datasets/*
+!Datasets/readme.md
+
+# Ignora tudo dentro da pasta Models, exceto o readme.md
+Models/*
+!Models/instruction.md
+!Models/checkpoints
+
+# Ignora arquivos e pastas que começam com ., exceto .gitignore
+.*
+!.gitignore
