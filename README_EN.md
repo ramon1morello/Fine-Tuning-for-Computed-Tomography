@@ -5,9 +5,10 @@
 2. [Dataset](#dataset)  
 3. [Process Stages](#process-stages)  
 4. [Methodological Choices](#methodological-choices)  
-5. [Evaluation Metrics](#evaluation-metrics)  
-6. [Project Structure](#project-structure)  
-7. [Installation and Execution](#installation-and-execution)  
+5. [Evaluation Metrics](#evaluation-metrics)
+6. [Quantitative Results](#quantitative-results)
+7. [Project Structure](#project-structure)  
+8. [Installation and Execution](#installation-and-execution)  
 
 ---
 
@@ -79,6 +80,46 @@ The performance evaluation of the super-resolution models is carried out using t
 - A perceptual metric that combines visual quality information to assess the naturalness of reconstructed images. Lower values indicate better perceptual quality.
 
 These metrics allow a complementary analysis of structural fidelity and visual quality of the reconstructed images.
+
+---
+
+## Quantitative Results
+
+The quantitative results show that the fine-tuning process promotes consistent improvements compared to direct inference, both in the original-resolution domain and in the reduced-resolution domain. A significant increase in the mean PSNR and SSIM values is observed, accompanied by a reduction in the Perceptual Index (PI), indicating simultaneously higher structural fidelity and better perceptual quality of the reconstructed images. The associated boxplots reinforce this trend by showing lower result dispersion and a shift in the distributions in favor of the fine-tuned models when compared to models without fine-tuning and to the reference FBP method.
+
+The results presented below report the mean and standard deviation of the PSNR, SSIM, and PI metrics for the different evaluated methods, considering both the original and reduced resolution domains. It can be observed that the models subjected to the fine-tuning process consistently outperform direct inference and the FBP reference method.
+
+##### Table 1 – Results in the original resolution domain (362×362 pixels)
+
+| Method             | Training Resoluiton | PSNR (↑)           | SSIM (↑)           | PI (↓)            |
+|----------------------|--------------------------|--------------------|--------------------|-------------------|
+| FBP                  | –                        | 18,81 ± 1,83       | 0,34 ± 0,09        | 4,11 ± 1,11       |
+| Real-ESRGAN (pre)    | –                        | 19,24 ± 2,07       | 0,41 ± 0,09        | 4,68 ± 1,01       |
+| HAT (pre)            | –                        | 17,12 ± 2,33       | 0,31 ± 0,09        | 3,73 ± 1,05       |
+| Real-ESRGAN (FT)     | 362×362                  | 28,75 ± 3,33       | 0,76 ± 0,14        | 4,08 ± 0,58       |
+| Real-ESRGAN (FT)     | 240×240                  | 28,43 ± 3,46       | 0,71 ± 0,14        | 2,53 ± 0,41       |
+| HAT (FT)             | 240×240                  | 26,98 ± 3,04       | 0,68 ± 0,13        | 3,59 ± 0,62       |
+
+##### Table 2 – Results in the reduced resolution domain (240×240 pixels)
+
+| Method               | Training Resoluiton | PSNR (↑)           | SSIM (↑)           | PI (↓)            |
+|----------------------|--------------------------|--------------------|--------------------|-------------------|
+| FBP                  | –                        | 19,40 ± 1,89       | 0,47 ± 0,09        | 5,60 ± 1,72       |
+| Real-ESRGAN (pre)    | –                        | 19,62 ± 2,13       | 0,57 ± 0,08        | 5,12 ± 1,46       |
+| HAT (pre)            | –                        | 17,29 ± 2,30       | 0,41 ± 0,09        | 5,62 ± 2,00       |
+| Real-ESRGAN (FT)     | 362×362                  | 28,99 ± 3,02       | 0,80 ± 0,11        | 4,88 ± 0,82       |
+| Real-ESRGAN (FT)     | 240×240                  | 29,63 ± 3,44       | 0,81 ± 0,11        | 3,46 ± 0,72       |
+| HAT (FT)             | 240×240                  | 27,67 ± 3,01       | 0,77 ± 0,10        | 4,86 ± 0,78       |
+
+The boxplots below illustrate the distribution of the PSNR, SSIM, and PI metrics for the different evaluated methods, highlighting the gains achieved through fine-tuning and the reduction in result dispersion compared to direct inference.
+
+##### Original Resolution (362×362 pixels)
+![Boxplots - Resolução Original](/Others/Metrics/Results/boxplot_res_original.png)
+
+##### Reduced Resoluiton (240×240 pixels)
+![Boxplots - Resolução Reduzida](/Others/Metrics/Results/boxplot_res_reduzida.png)
+
+The complete result files are available in the [`Results`](/Others/Metrics/Results/) directory, which contains both the boxplot figures and the file with the individual metrics computed for all reconstructed images in this experiment.
 
 ---
 

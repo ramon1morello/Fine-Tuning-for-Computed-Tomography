@@ -15,9 +15,10 @@
 2. [Conjunto de Dados](#conjunto-de-dados)  
 3. [Etapas do Processo](#etapas-do-processo)  
 4. [Escolhas Metodológicas](#escolhas-metodológicas)  
-5. [Métricas de Avaliação](#métricas-de-avaliação)  
-6. [Estrutura do Projeto](#estrutura-do-projeto)  
-7. [Instalação e Execução](#instalação-e-execução)  
+5. [Métricas de Avaliação](#métricas-de-avaliação)
+6. [Resultados Quantitativos](#resultados-quantitativos)
+7. [Estrutura do Projeto](#estrutura-do-projeto)  
+8. [Instalação e Execução](#instalação-e-execução)  
 
 
 ---
@@ -90,6 +91,47 @@ A avaliação do desempenho dos modelos de super-resolução é realizada por me
 - Métrica perceptual que combina informações de qualidade visual para avaliar a naturalidade das imagens reconstruídas. Valores menores indicam melhor qualidade perceptual.
 
 Essas métricas permitem analisar de forma complementar a fidelidade estrutural e a qualidade visual das imagens reconstruídas.
+
+---
+
+## Resultados Quantitativos
+
+Os resultados quantitativos evidenciam que o processo de fine-tuning promove melhorias consistentes em relação à inferência direta, tanto no domínio de resolução original quanto no domínio de resolução reduzida. Observa-se aumento significativo nos valores médios de PSNR e SSIM, acompanhado por redução do Índice de Percepção (PI), indicando simultaneamente maior fidelidade estrutural e melhor qualidade perceptual das imagens reconstruídas. Os boxplots associados reforçam essa tendência, ao evidenciar menor dispersão dos resultados e deslocamento das distribuições em favor dos modelos ajustados, quando comparados aos métodos sem fine-tuning e ao método de referência FBP.
+
+Os resultados a seguir apresentam a média e o desvio padrão das métricas PSNR, SSIM e PI para os diferentes métodos avaliados, considerando os domínios de resolução original e reduzida. Observa-se que os modelos submetidos ao processo de fine-tuning apresentam melhorias consistentes em relação à inferência direta e ao método de referência FBP.
+
+##### Tabela 1 – Resultados no domínio de resolução original (362×362 pixels)
+
+| Método               | Resolução de Treinamento | PSNR (↑)           | SSIM (↑)           | PI (↓)            |
+|----------------------|--------------------------|--------------------|--------------------|-------------------|
+| FBP                  | –                        | 18,81 ± 1,83       | 0,34 ± 0,09        | 4,11 ± 1,11       |
+| Real-ESRGAN (pre)    | –                        | 19,24 ± 2,07       | 0,41 ± 0,09        | 4,68 ± 1,01       |
+| HAT (pre)            | –                        | 17,12 ± 2,33       | 0,31 ± 0,09        | 3,73 ± 1,05       |
+| Real-ESRGAN (FT)     | 362×362                  | 28,75 ± 3,33       | 0,76 ± 0,14        | 4,08 ± 0,58       |
+| Real-ESRGAN (FT)     | 240×240                  | 28,43 ± 3,46       | 0,71 ± 0,14        | 2,53 ± 0,41       |
+| HAT (FT)             | 240×240                  | 26,98 ± 3,04       | 0,68 ± 0,13        | 3,59 ± 0,62       |
+
+##### Tabela 2 – Resultados no domínio de resolução reduzida (240×240 pixels)
+
+| Método               | Resolução de Treinamento | PSNR (↑)           | SSIM (↑)           | PI (↓)            |
+|----------------------|--------------------------|--------------------|--------------------|-------------------|
+| FBP                  | –                        | 19,40 ± 1,89       | 0,47 ± 0,09        | 5,60 ± 1,72       |
+| Real-ESRGAN (pre)    | –                        | 19,62 ± 2,13       | 0,57 ± 0,08        | 5,12 ± 1,46       |
+| HAT (pre)            | –                        | 17,29 ± 2,30       | 0,41 ± 0,09        | 5,62 ± 2,00       |
+| Real-ESRGAN (FT)     | 362×362                  | 28,99 ± 3,02       | 0,80 ± 0,11        | 4,88 ± 0,82       |
+| Real-ESRGAN (FT)     | 240×240                  | 29,63 ± 3,44       | 0,81 ± 0,11        | 3,46 ± 0,72       |
+| HAT (FT)             | 240×240                  | 27,67 ± 3,01       | 0,77 ± 0,10        | 4,86 ± 0,78       |
+
+
+Os diagramas de caixa (boxplots) a seguir ilustram a distribuição das métricas PSNR, SSIM e PI para os diferentes métodos avaliados, evidenciando o ganho obtido com o *fine-tuning* e a redução da dispersão dos resultados em relação à inferência direta.
+
+##### Resolução Original (362×362 pixels)
+![Boxplots - Resolução Original](/Others/Metrics/Results/boxplot_res_original.png)
+
+##### Resolução Reduzida (240×240 pixels)
+![Boxplots - Resolução Reduzida](/Others/Metrics/Results/boxplot_res_reduzida.png)
+
+Os arquivos de resultados completos estão disponíveis na pasta [`Results`](/Others/Metrics/Results/), a qual contém tanto as figuras dos boxplots quanto o arquivo com as métricas individuais calculadas para todas as imagens reconstruídas neste experimento.
 
 ---
 
