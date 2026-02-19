@@ -12,8 +12,8 @@ Variavel number_of_datasets:
 """
 
 # Pasta raíz do projeto
-root_path = "/home/cisne/Documentos/Ramon_TCC/TCC_SETUP"
-# root_path = "D:/TCC/SETUP_2.0"
+root_path = "..."
+
 
 """
 
@@ -38,17 +38,17 @@ env_size = "reduced"
 
 #------------Real-ESRGAN---------------------#
 # Nome dos modelos a serem utilizados
-# esrgan_model_name = "RealESRGAN_x2plus.pth"
+esrgan_model_name = "RealESRGAN_x2plus.pth"
 
-# -- Fine-Tunado
-# esrgan_model_name = "FT_ESRGAN_PSNR_28.61_362px_compat.pth"
-esrgan_model_name = "FT_ESRGAN_PSNR_29.34_240px_compat.pth"
+# -- Fine-Tuned
+
+# esrgan_model_name = ""
 
 #-------------------HAT---------------------#
-# hat_model_name = "HAT-L_SRx2_ImageNet-pretrain.pth"
+hat_model_name = "HAT-L_SRx2_ImageNet-pretrain.pth"
 
-# -- Fine-Tunado
-# hat_model_name = "FT_HAT_PSNR_28.97_240px_compat.pth"
+# -- Fine-Tuned
+# hat_model_name = ""
 
 
 
