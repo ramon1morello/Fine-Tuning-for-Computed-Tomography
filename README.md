@@ -4,7 +4,7 @@
   <a href="README_EN.md">
     <img src="https://img.shields.io/badge/README-English-🇬🇧" alt="English">
   </a>
-  <a href="https://ele.ufes.br/pt-br/projetos-de-graduacao-202401-e-202402">
+  <a href="https://ele.ufes.br/pt-br/projetos-de-graduacao-202501-e-202502">
     <img src="https://img.shields.io/badge/-Projeto%20de%20Graduação-lightyellow" alt="Projeto de Graduação">
   </a>
 </p>
